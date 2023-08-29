@@ -27,7 +27,7 @@ it('can rewrite instant gaming link with tag and subtag', function () {
     expect($rewrittenLink)->toBe('https://www.instant-gaming.com/it/1234-comprare-ket-steam-xxx/?igr=mytag-20&linkCode=ogi&igr_extra=customsub');
 });
 
-it('can rewrite full instant gaming link with tag ans subtag', function (){
+it('can rewrite full instant gaming link with tag ans subtag', function () {
     $link = 'https://www.instant-gaming.com/it/1234-comprare-ket-steam-xxx/?igr=1234&igr_extra=sub&linkCode=ogi';
     $tag = 'mytag-20';
     $subtag = 'customsub';

@@ -27,7 +27,7 @@ it('can rewrite amazon link with tag and subtag', function () {
     expect($rewrittenLink)->toBe('https://www.amazon.it/dp/B08PC3PGZM?tag=mytag-20&linkCode=ogi&ascsubtag=customsub');
 });
 
-it('can rewrite full amazon link with tag ans subtag', function (){
+it('can rewrite full amazon link with tag ans subtag', function () {
     $link = 'https://www.amazon.it/dp/B08PC3PGZM?tag=tomshar-21&ascsubtag=sub&linkCode=ogi';
     $tag = 'mytag-20';
     $subtag = 'customsub';
