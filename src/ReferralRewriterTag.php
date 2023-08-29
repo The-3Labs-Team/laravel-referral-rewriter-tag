@@ -27,10 +27,10 @@ class ReferralRewriterTag
     /**
      *  Rewrite instant gaming link with tag and subtag
      */
-        public function rewriteInstantGamingLink(string $link, ?string $tag, ?string $subtag) : string
-        {
-            return $this->rewriteLink($tag, $link, $subtag, 'igr', 'igr_extra');
-        }
+     public function rewriteInstantGamingLink(string $link, ?string $tag, ?string $subtag) : string
+     {
+        return $this->rewriteLink($tag, $link, $subtag, 'igr', 'igr_extra');
+     }
 
     /**
      *  Retrieve the domain type
@@ -48,12 +48,14 @@ class ReferralRewriterTag
      */
     public function rewriteLink(?string $tag, string $link, ?string $subtag, string $tagRegexName, string $subTagRegexName): string|array|null
     {
+        //Check if a tag
         if ($tag) {
             $link = preg_replace('/' . $tagRegexName . '=[^&]*/', $tagRegexName . '=' . $tag, $link);
         }
 
-        //Check if the link already contains a subtag
+        //Check if a subTag
         if ($subtag) {
+            //Check if the link already contains a subtag
             if (str_contains($link, $subTagRegexName . '=')) {
                 $link = preg_replace('/' . $subTagRegexName . '=[^&]*/', $subTagRegexName. '=' . $subtag, $link);
             } else {
