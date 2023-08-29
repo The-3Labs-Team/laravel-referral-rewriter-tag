@@ -21,16 +21,16 @@ class ReferralRewriterTag
      */
     public function rewriteAmazonLink(string $link, ?string $tag, ?string $subtag): string
     {
-        if($tag){
+        if ($tag) {
             $link = preg_replace('/tag=[^&]*/', 'tag='.$tag, $link);
         }
 
         //Check if the link already contains a subtag
-        if($subtag) {
+        if ($subtag) {
             if (str_contains($link, 'ascsubtag=')) {
-                $link = preg_replace('/ascsubtag=[^&]*/', 'ascsubtag=' . $subtag, $link);
+                $link = preg_replace('/ascsubtag=[^&]*/', 'ascsubtag='.$subtag, $link);
             } else {
-                $link = $link . '&ascsubtag=' . $subtag;
+                $link = $link.'&ascsubtag='.$subtag;
             }
         }
 
