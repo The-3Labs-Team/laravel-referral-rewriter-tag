@@ -18,8 +18,8 @@ class ReferralRewriterTagServiceProvider extends PackageServiceProvider
         $package
             ->name('laravel-referral-rewriter-tag')
             ->hasConfigFile();
-//            ->hasViews()
-//            ->hasMigration('create_laravel-referral-rewriter-tag_table')
-//            ->hasCommand(ReferralRewriterTagCommand::class);
+        //            ->hasViews()
+        //            ->hasMigration('create_laravel-referral-rewriter-tag_table')
+        //            ->hasCommand(ReferralRewriterTagCommand::class);
     }
 }
