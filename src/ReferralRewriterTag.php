@@ -19,17 +19,17 @@ class ReferralRewriterTag
     /**
      *  Rewrite amazon link with tag and subtag
      */
-    public function rewriteAmazonLink(string $link, ?string $tag, ?string $subtag, ?string $additionalQuery): string
+    public function rewriteAmazonLink(): string
     {
-        return $this->rewriteLink($tag, $link, $subtag, 'tag', 'ascsubtag', $additionalQuery);
+        return $this->rewriteLink(tagKey: 'tag', subTagKey: 'ascsubtag');
     }
 
     /**
      *  Rewrite instant gaming link with tag and subtag
      */
-     public function rewriteInstantGamingLink(string $link, ?string $tag, ?string $subtag, ?string $additionalQuery) : string
+     public function rewriteInstantGamingLink() : string
      {
-        return $this->rewriteLink($tag, $link, $subtag, 'igr', 'igr_extra', $additionalQuery);
+        return $this->rewriteLink(tagKey: 'igr', subTagKey: 'igr_extra');
      }
 
     /**
@@ -46,10 +46,10 @@ class ReferralRewriterTag
     /**
      *  Rewrite link with new tag and/or subtag
      */
-    public function rewriteLink(?string $tag, string $link, ?string $subtag, string $tagRegexName, string $subTagRegexName, ?string $additionalQuery): string|array|null
+    public function rewriteLink(string $tagKey, string $subTagKey): string|array|null
     {
 
-        $urlComponents = parse_url($link);
+        $urlComponents = parse_url($this->link);
         $queryParams = [];
 
         //Get URL query params
@@ -57,12 +57,12 @@ class ReferralRewriterTag
             parse_str($urlComponents['query'], $queryParams);
         }
 
-        if($tag){
-            $queryParams[$tagRegexName] = $tag;
+        if($this->tag){
+            $queryParams[$tagKey] = $this->tag;
         }
 
-        if($subtag){
-            $queryParams[$subTagRegexName] = $subtag;
+        if($this->subtag){
+            $queryParams[$subTagKey] = $this->subtag;
         }
 
 //        if($linkCode != null){
