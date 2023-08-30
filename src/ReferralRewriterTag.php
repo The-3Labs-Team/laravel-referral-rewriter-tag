@@ -23,6 +23,7 @@ class ReferralRewriterTag
         return match ($this->retrieveTheDomainType()) {
             'amazon' => $this->rewriteAmazonLink(),
             'instant-gaming' => $this->rewriteInstantGamingLink(),
+            'ebay' => $this->rewriteEbayLink(),
             default => $this->link,
         };
     }
@@ -42,6 +43,15 @@ class ReferralRewriterTag
      {
         return $this->rewriteLink(tagKey: 'igr', subTagKey: 'igr_extra');
      }
+
+    /**
+     *  Rewrite ebay link with tag and subtag
+     */
+    public function rewriteEbayLink() : string
+    {
+        return $this->rewriteLink(tagKey: 'campid', subTagKey: 'customid');
+    }
+
 
     /**
      *  Retrieve the domain type
