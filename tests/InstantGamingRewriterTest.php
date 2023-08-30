@@ -23,7 +23,7 @@ it('can write instant gaming link with tag, subtag and additional query', functi
     $link = 'https://www.instant-gaming.com/it/1234-comprare-ket-steam-xxx/';
     $tag = 'mytag-20';
     $subtag = 'customsub';
-    $additionalQuery = 'addquery=myogi';
+    $additionalQuery = '&addquery=myogi';
 
 
     $rewrittenLink = ReferralRewriterTag::rewrite($link, $tag, $subtag, $additionalQuery);

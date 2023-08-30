@@ -23,7 +23,7 @@ it('can write amazon link with tag, subtag and additional query', function () {
     $link = 'https://www.amazon.it/dp/B08PC3PGZM';
     $tag = 'mytag-20';
     $subtag = 'customsub';
-    $additionalQuery = 'addquery=myogi';
+    $additionalQuery = '&addquery=myogi';
 
     $rewrittenLink = ReferralRewriterTag::rewrite($link, $tag, $subtag, $additionalQuery);
     expect($rewrittenLink)->toBe('https://www.amazon.it/dp/B08PC3PGZM?tag=mytag-20&ascsubtag=customsub&addquery=myogi');

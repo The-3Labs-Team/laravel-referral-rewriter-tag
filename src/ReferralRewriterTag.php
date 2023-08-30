@@ -71,7 +71,6 @@ class ReferralRewriterTag
 
         //Rewrite Params
         $newQueryParams = http_build_query($queryParams);
-        $additionalQuery = $additionalQuery ? '&' . $additionalQuery : '';
 
         //Make URL
         return $urlComponents['scheme'] . '://' . $urlComponents['host'] . $urlComponents['path'] . '?' . $newQueryParams . $additionalQuery;
