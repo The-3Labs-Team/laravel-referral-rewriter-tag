@@ -7,7 +7,7 @@ class ReferralRewriterTag
     /**
      *  Start function
      */
-    public function rewrite(string $link, ?string $tag, ?string $subtag, ?string $additionalQuery = null): string
+    public function rewrite(string $link, ?string $tag, ?string $subtag, string $additionalQuery = null): string
     {
         return match ($this->retrieveTheDomainType($link)) {
             'amazon' => $this->rewriteAmazonLink($link, $tag, $subtag, $additionalQuery),
@@ -27,10 +27,10 @@ class ReferralRewriterTag
     /**
      *  Rewrite instant gaming link with tag and subtag
      */
-     public function rewriteInstantGamingLink(string $link, ?string $tag, ?string $subtag, ?string $additionalQuery) : string
-     {
+    public function rewriteInstantGamingLink(string $link, ?string $tag, ?string $subtag, ?string $additionalQuery): string
+    {
         return $this->rewriteLink($tag, $link, $subtag, 'igr', 'igr_extra', $additionalQuery);
-     }
+    }
 
     /**
      *  Retrieve the domain type
@@ -57,23 +57,23 @@ class ReferralRewriterTag
             parse_str($urlComponents['query'], $queryParams);
         }
 
-        if($tag){
+        if ($tag) {
             $queryParams[$tagRegexName] = $tag;
         }
 
-        if($subtag){
+        if ($subtag) {
             $queryParams[$subTagRegexName] = $subtag;
         }
 
-//        if($linkCode != null){
-//            $queryParams['linkCode'] = $linkCode;
-//        }
+        //        if($linkCode != null){
+        //            $queryParams['linkCode'] = $linkCode;
+        //        }
 
         //Rewrite Params
         $newQueryParams = http_build_query($queryParams);
-        $additionalQuery = $additionalQuery ? '&' . $additionalQuery : '';
+        $additionalQuery = $additionalQuery ? '&'.$additionalQuery : '';
 
         //Make URL
-        return $urlComponents['scheme'] . '://' . $urlComponents['host'] . $urlComponents['path'] . '?' . $newQueryParams . $additionalQuery;
+        return $urlComponents['scheme'].'://'.$urlComponents['host'].$urlComponents['path'].'?'.$newQueryParams.$additionalQuery;
     }
 }
