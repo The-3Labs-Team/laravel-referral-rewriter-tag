@@ -25,7 +25,6 @@ it('can write instant gaming link with tag, subtag and additional query', functi
     $subtag = 'customsub';
     $additionalQuery = '&addquery=myogi';
 
-
     $rewrittenLink = ReferralRewriterTag::rewrite($link, $tag, $subtag, $additionalQuery);
     expect($rewrittenLink)->toBe('https://www.instant-gaming.com/it/1234-comprare-ket-steam-xxx/?igr=mytag-20&igr_extra=customsub&addquery=myogi');
 });
