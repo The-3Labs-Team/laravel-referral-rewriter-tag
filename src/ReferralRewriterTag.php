@@ -7,7 +7,7 @@ class ReferralRewriterTag
     /**
      *  Start function
      */
-    public function rewrite(string $link, ?string $tag, ?string $subtag, ?string $additionalQuery = null): string
+    public function rewrite(string $link, ?string $tag, ?string $subtag, string $additionalQuery = null): string
     {
         return match ($this->retrieveTheDomainType($link)) {
             'amazon' => $this->rewriteAmazonLink($link, $tag, $subtag, $additionalQuery),
@@ -27,10 +27,10 @@ class ReferralRewriterTag
     /**
      *  Rewrite instant gaming link with tag and subtag
      */
-     public function rewriteInstantGamingLink() : string
-     {
+    public function rewriteInstantGamingLink(): string
+    {
         return $this->rewriteLink(tagKey: 'igr', subTagKey: 'igr_extra');
-     }
+    }
 
     /**
      *  Retrieve the domain type
@@ -57,22 +57,22 @@ class ReferralRewriterTag
             parse_str($urlComponents['query'], $queryParams);
         }
 
-        if($this->tag){
+        if ($this->tag) {
             $queryParams[$tagKey] = $this->tag;
         }
 
-        if($this->subtag){
+        if ($this->subtag) {
             $queryParams[$subTagKey] = $this->subtag;
         }
 
-//        if($linkCode != null){
-//            $queryParams['linkCode'] = $linkCode;
-//        }
+        //        if($linkCode != null){
+        //            $queryParams['linkCode'] = $linkCode;
+        //        }
 
         //Rewrite Params
         $newQueryParams = http_build_query($queryParams);
 
         //Make URL
-        return $urlComponents['scheme'] . '://' . $urlComponents['host'] . $urlComponents['path'] . '?' . $newQueryParams . $additionalQuery;
+        return $urlComponents['scheme'].'://'.$urlComponents['host'].$urlComponents['path'].'?'.$newQueryParams.$additionalQuery;
     }
 }
