@@ -4,16 +4,18 @@ namespace The3LabsTeam\ReferralRewriterTag;
 
 class ReferralRewriterTag
 {
-
     protected ?string $link;
+
     protected ?string $tag;
+
     protected ?string $subtag;
+
     protected ?string $additionalQuery;
 
     /**
      *  Start function
      */
-    public function rewrite(string $link, ?string $tag, ?string $subtag, ?string $additionalQuery = null): string
+    public function rewrite(string $link, ?string $tag, ?string $subtag, string $additionalQuery = null): string
     {
         $this->link = $link;
         $this->tag = $tag;
@@ -39,19 +41,18 @@ class ReferralRewriterTag
     /**
      *  Rewrite instant gaming link with tag and subtag
      */
-     public function rewriteInstantGamingLink() : string
-     {
+    public function rewriteInstantGamingLink(): string
+    {
         return $this->rewriteLink(tagKey: 'igr', subTagKey: 'igr_extra');
-     }
+    }
 
     /**
      *  Rewrite ebay link with tag and subtag
      */
-    public function rewriteEbayLink() : string
+    public function rewriteEbayLink(): string
     {
         return $this->rewriteLink(tagKey: 'campid', subTagKey: 'customid');
     }
-
 
     /**
      *  Retrieve the domain type
@@ -77,15 +78,16 @@ class ReferralRewriterTag
             parse_str($urlComponents['query'], $queryParams);
         }
 
-        if($this->tag){
+        if ($this->tag) {
             $queryParams[$tagKey] = $this->tag;
         }
 
-        if($this->subtag){
+        if ($this->subtag) {
             $queryParams[$subTagKey] = $this->subtag;
         }
 
         $newQueryParams = http_build_query($queryParams);
-        return $urlComponents['scheme'] . '://' . $urlComponents['host'] . $urlComponents['path'] . '?' . $newQueryParams . $this->additionalQuery;
+
+        return $urlComponents['scheme'].'://'.$urlComponents['host'].$urlComponents['path'].'?'.$newQueryParams.$this->additionalQuery;
     }
 }
