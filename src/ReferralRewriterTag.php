@@ -7,11 +7,11 @@ class ReferralRewriterTag
     /**
      *  Start function
      */
-    public function rewrite(string $link, ?string $tag, ?string $subtag): string
+    public function rewrite(string $link, ?string $tag, ?string $subtag, ?string $additionalQuery = null): string
     {
         return match ($this->retrieveTheDomainType($link)) {
-            'amazon' => $this->rewriteAmazonLink($link, $tag, $subtag),
-            'instant-gaming' => $this->rewriteInstantGamingLink($link, $tag, $subtag),
+            'amazon' => $this->rewriteAmazonLink($link, $tag, $subtag, $additionalQuery),
+            'instant-gaming' => $this->rewriteInstantGamingLink($link, $tag, $subtag, $additionalQuery),
             default => $link,
         };
     }
@@ -19,17 +19,17 @@ class ReferralRewriterTag
     /**
      *  Rewrite amazon link with tag and subtag
      */
-    public function rewriteAmazonLink(string $link, ?string $tag, ?string $subtag): string
+    public function rewriteAmazonLink(string $link, ?string $tag, ?string $subtag, ?string $additionalQuery): string
     {
-        return $this->rewriteLink($tag, $link, $subtag, 'tag', 'ascsubtag');
+        return $this->rewriteLink($tag, $link, $subtag, 'tag', 'ascsubtag', $additionalQuery);
     }
 
     /**
      *  Rewrite instant gaming link with tag and subtag
      */
-     public function rewriteInstantGamingLink(string $link, ?string $tag, ?string $subtag) : string
+     public function rewriteInstantGamingLink(string $link, ?string $tag, ?string $subtag, ?string $additionalQuery) : string
      {
-        return $this->rewriteLink($tag, $link, $subtag, 'igr', 'igr_extra');
+        return $this->rewriteLink($tag, $link, $subtag, 'igr', 'igr_extra', $additionalQuery);
      }
 
     /**
@@ -46,23 +46,34 @@ class ReferralRewriterTag
     /**
      *  Rewrite link with new tag and/or subtag
      */
-    public function rewriteLink(?string $tag, string $link, ?string $subtag, string $tagRegexName, string $subTagRegexName): string|array|null
+    public function rewriteLink(?string $tag, string $link, ?string $subtag, string $tagRegexName, string $subTagRegexName, ?string $additionalQuery): string|array|null
     {
-        //Check if a tag
-        if ($tag) {
-            $link = preg_replace('/' . $tagRegexName . '=[^&]*/', $tagRegexName . '=' . $tag, $link);
+
+        $urlComponents = parse_url($link);
+        $queryParams = [];
+
+        //Get URL query params
+        if (isset($urlComponents['query'])) {
+            parse_str($urlComponents['query'], $queryParams);
         }
 
-        //Check if a subTag
-        if ($subtag) {
-            //Check if the link already contains a subtag
-            if (str_contains($link, $subTagRegexName . '=')) {
-                $link = preg_replace('/' . $subTagRegexName . '=[^&]*/', $subTagRegexName. '=' . $subtag, $link);
-            } else {
-                $link = $link . '&'. $subTagRegexName .'=' . $subtag;
-            }
+        if($tag){
+            $queryParams[$tagRegexName] = $tag;
         }
 
-        return $link;
+        if($subtag){
+            $queryParams[$subTagRegexName] = $subtag;
+        }
+
+//        if($linkCode != null){
+//            $queryParams['linkCode'] = $linkCode;
+//        }
+
+        //Rewrite Params
+        $newQueryParams = http_build_query($queryParams);
+        $additionalQuery = $additionalQuery ? '&' . $additionalQuery : '';
+
+        //Make URL
+        return $urlComponents['scheme'] . '://' . $urlComponents['host'] . $urlComponents['path'] . '?' . $newQueryParams . $additionalQuery;
     }
 }
