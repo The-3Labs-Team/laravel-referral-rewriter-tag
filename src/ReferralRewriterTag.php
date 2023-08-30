@@ -4,15 +4,26 @@ namespace The3LabsTeam\ReferralRewriterTag;
 
 class ReferralRewriterTag
 {
+
+    protected ?string $link;
+    protected ?string $tag;
+    protected ?string $subtag;
+    protected ?string $additionalQuery;
+
     /**
      *  Start function
      */
     public function rewrite(string $link, ?string $tag, ?string $subtag, ?string $additionalQuery = null): string
     {
-        return match ($this->retrieveTheDomainType($link)) {
-            'amazon' => $this->rewriteAmazonLink($link, $tag, $subtag, $additionalQuery),
-            'instant-gaming' => $this->rewriteInstantGamingLink($link, $tag, $subtag, $additionalQuery),
-            default => $link,
+        $this->link = $link;
+        $this->tag = $tag;
+        $this->subtag = $subtag;
+        $this->additionalQuery = $additionalQuery;
+
+        return match ($this->retrieveTheDomainType()) {
+            'amazon' => $this->rewriteAmazonLink(),
+            'instant-gaming' => $this->rewriteInstantGamingLink(),
+            default => $this->link,
         };
     }
 
@@ -35,9 +46,9 @@ class ReferralRewriterTag
     /**
      *  Retrieve the domain type
      */
-    public function retrieveTheDomainType(string $link): string
+    public function retrieveTheDomainType(): string
     {
-        $domain = parse_url($link, PHP_URL_HOST);
+        $domain = parse_url($this->link, PHP_URL_HOST);
         $domain = str_replace('www.', '', $domain);
 
         return explode('.', $domain)[0];
@@ -52,7 +63,6 @@ class ReferralRewriterTag
         $urlComponents = parse_url($this->link);
         $queryParams = [];
 
-        //Get URL query params
         if (isset($urlComponents['query'])) {
             parse_str($urlComponents['query'], $queryParams);
         }
@@ -65,14 +75,7 @@ class ReferralRewriterTag
             $queryParams[$subTagKey] = $this->subtag;
         }
 
-//        if($linkCode != null){
-//            $queryParams['linkCode'] = $linkCode;
-//        }
-
-        //Rewrite Params
         $newQueryParams = http_build_query($queryParams);
-
-        //Make URL
-        return $urlComponents['scheme'] . '://' . $urlComponents['host'] . $urlComponents['path'] . '?' . $newQueryParams . $additionalQuery;
+        return $urlComponents['scheme'] . '://' . $urlComponents['host'] . $urlComponents['path'] . '?' . $newQueryParams . $this->additionalQuery;
     }
 }
