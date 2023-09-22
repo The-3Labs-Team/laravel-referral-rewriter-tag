@@ -5,14 +5,17 @@ namespace The3LabsTeam\ReferralRewriterTag;
 class ReferralRewriterTag
 {
     protected string $link = '';
+
     protected ?string $tag;
+
     protected ?string $subtag;
+
     protected ?string $additionalQuery;
 
     /**
      *  Start function
      */
-    public function rewrite(string $link, ?string $tag, ?string $subtag, ?string $additionalQuery = null): string
+    public function rewrite(string $link, ?string $tag, ?string $subtag, string $additionalQuery = null): string
     {
         $this->link = $link;
         $this->tag = $tag;
