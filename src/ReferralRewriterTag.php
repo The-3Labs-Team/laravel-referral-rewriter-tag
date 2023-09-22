@@ -4,7 +4,7 @@ namespace The3LabsTeam\ReferralRewriterTag;
 
 class ReferralRewriterTag
 {
-    protected ?string $link;
+    protected string $link = '';
 
     protected ?string $tag;
 

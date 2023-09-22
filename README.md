@@ -24,7 +24,10 @@ $referralRewriterTag = ReferralRewriterTag::rewrite('https://www.amazon.it/Hackl
 
 ## Supported Shops
 
-List here
+* Amazon
+* Ebay
+* Instant-Gaming
+* ... more to come!
 
 ## Testing
 
