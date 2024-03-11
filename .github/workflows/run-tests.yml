@@ -48,7 +48,7 @@ jobs:
         run: composer show -D
 
       - name: Setup Code Climate
-        uses: amancevice/setup-code-climate@v1
+        uses: amancevice/setup-code-climate@v2
         with:
           cc_test_reporter_id: ${{ secrets.CC_TEST_REPORTER_ID }}
 
