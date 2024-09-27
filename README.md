@@ -18,9 +18,14 @@ composer require the-3labs-team/laravel-referral-rewriter-tag
 
 ## Usage
 
+Before: https://www.amazon.i/dp/1520569912
+
 ```php
-$referralRewriterTag = ReferralRewriterTag::rewrite('https://www.amazon.it/Hacklog-Anonimato-Manuale-Sicurezza-Informatica/dp/1520569912', 'my-tag', 'my-subtag');
+$referralRewriterTag = ReferralRewriterTag::rewrite('https://www.amazon.it/dp/1520569912', 'my-tag', 'my-subtag');
 ```
+
+After: https://www.amazon.it/dp/1520569912?tag=my-tag&ascsubtag=my-subtag
+
 
 ## Supported Shops
 
