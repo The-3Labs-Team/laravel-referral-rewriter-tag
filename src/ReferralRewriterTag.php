@@ -35,6 +35,14 @@ class ReferralRewriterTag
      */
     public function rewriteAmazonLink(): string
     {
+        if(!$this->tag) {
+            $this->tag = config('referral-rewriter-tag.amazon.tag');
+        }
+
+        if(!$this->subtag) {
+            $this->subtag = config('referral-rewriter-tag.amazon.subtag');
+        }
+
         return $this->rewriteLink(tagKey: 'tag', subTagKey: 'ascsubtag');
     }
 
@@ -43,6 +51,14 @@ class ReferralRewriterTag
      */
     public function rewriteInstantGamingLink(): string
     {
+        if(!$this->tag) {
+            $this->tag = config('referral-rewriter-tag.instantgaming.tag');
+        }
+
+        if(!$this->subtag) {
+            $this->subtag = config('referral-rewriter-tag.instantgaming.subtag');
+        }
+
         return $this->rewriteLink(tagKey: 'igr', subTagKey: 'igr_extra');
     }
 
@@ -51,6 +67,14 @@ class ReferralRewriterTag
      */
     public function rewriteEbayLink(): string
     {
+        if(!$this->tag) {
+            $this->tag = config('referral-rewriter-tag.ebay.tag');
+        }
+
+        if(!$this->subtag) {
+            $this->subtag = config('referral-rewriter-tag.ebay.subtag');
+        }
+
         return $this->rewriteLink(tagKey: 'campid', subTagKey: 'customid');
     }
 
