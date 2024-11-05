@@ -15,7 +15,7 @@ class ReferralRewriterTag
     /**
      *  Start function
      */
-    public function rewrite(string $link, ?string $tag, ?string $subtag, string $additionalQuery = null): string
+    public function rewrite(string $link, ?string $tag, ?string $subtag, ?string $additionalQuery = null): string
     {
         $this->link = $link;
         $this->tag = $tag;
@@ -35,11 +35,11 @@ class ReferralRewriterTag
      */
     public function rewriteAmazonLink(): string
     {
-        if(!$this->tag) {
+        if (! $this->tag) {
             $this->tag = config('referral-rewriter-tag.amazon.tag');
         }
 
-        if(!$this->subtag) {
+        if (! $this->subtag) {
             $this->subtag = config('referral-rewriter-tag.amazon.subtag');
         }
 
@@ -51,11 +51,11 @@ class ReferralRewriterTag
      */
     public function rewriteInstantGamingLink(): string
     {
-        if(!$this->tag) {
+        if (! $this->tag) {
             $this->tag = config('referral-rewriter-tag.instantgaming.tag');
         }
 
-        if(!$this->subtag) {
+        if (! $this->subtag) {
             $this->subtag = config('referral-rewriter-tag.instantgaming.subtag');
         }
 
@@ -67,11 +67,11 @@ class ReferralRewriterTag
      */
     public function rewriteEbayLink(): string
     {
-        if(!$this->tag) {
+        if (! $this->tag) {
             $this->tag = config('referral-rewriter-tag.ebay.tag');
         }
 
-        if(!$this->subtag) {
+        if (! $this->subtag) {
             $this->subtag = config('referral-rewriter-tag.ebay.subtag');
         }
 
