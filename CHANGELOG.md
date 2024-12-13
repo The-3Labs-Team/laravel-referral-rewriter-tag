@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-referral-rewriter-tag` will be documented in this file.
 
+## v1.0.3 - 2024-12-13
+
+**Full Changelog**: https://github.com/The-3Labs-Team/laravel-referral-rewriter-tag/compare/v1.0.2...v1.0.3
+
 ## v1.0.2 - 2024-11-05
 
 ### What's Changed
