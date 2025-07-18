@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-referral-rewriter-tag` will be documented in this file.
 
+## v1.0.4 - 2025-07-18
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot[bot] in https://github.com/The-3Labs-Team/laravel-referral-rewriter-tag/pull/12
+* Bump aglipanci/laravel-pint-action from 2.4 to 2.5 by @dependabot[bot] in https://github.com/The-3Labs-Team/laravel-referral-rewriter-tag/pull/13
+* Bump dependabot/fetch-metadata from 2.3.0 to 2.4.0 by @dependabot[bot] in https://github.com/The-3Labs-Team/laravel-referral-rewriter-tag/pull/14
+* Bump stefanzweifel/git-auto-commit-action from 5 to 6 by @dependabot[bot] in https://github.com/The-3Labs-Team/laravel-referral-rewriter-tag/pull/15
+* Beta laravel 12 by @murdercode in https://github.com/The-3Labs-Team/laravel-referral-rewriter-tag/pull/16
+
+**Full Changelog**: https://github.com/The-3Labs-Team/laravel-referral-rewriter-tag/compare/v1.0.3...v1.0.4
+
 ## v1.0.3 - 2024-12-13
 
 **Full Changelog**: https://github.com/The-3Labs-Team/laravel-referral-rewriter-tag/compare/v1.0.2...v1.0.3
