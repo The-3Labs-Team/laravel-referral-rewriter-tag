@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-referral-rewriter-tag` will be documented in this file.
 
+## v1.0.5 - 2025-07-22
+
+Add PHP 8.2, 8.3, 8.4
+
+**Full Changelog**: https://github.com/The-3Labs-Team/laravel-referral-rewriter-tag/compare/v1.0.4...v1.0.5
+
 ## v1.0.4 - 2025-07-18
 
 ### What's Changed
