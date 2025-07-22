@@ -8,15 +8,6 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/a48e04d3306fa4a1f3a5/test_coverage)](https://codeclimate.com/github/The-3Labs-Team/laravel-referral-rewriter-tag/test_coverage)
 [![Total Downloads](https://img.shields.io/packagist/dt/the-3labs-team/laravel-referral-rewriter-tag.svg?style=flat-square)](https://packagist.org/packages/the-3labs-team/laravel-referral-rewriter-tag)
 
-## Requirements
-
-| Package Version     | Requirement | Version      |
-|---------------------|-------------|--------------|
-| 1.x.x               | Laravel     | 10.x or 11.x |
-| 1.x.x               | Nova        | 4.x          |
-| dev-beta-laravel-12 | Laravel     | 12.x         |
-| dev-beta-laravel-12 | Nova        | 5.x          |
-
 ## Installation
 
 You can install the package via composer:
