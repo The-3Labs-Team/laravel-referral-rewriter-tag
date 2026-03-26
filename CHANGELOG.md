@@ -2,6 +2,38 @@
 
 All notable changes to `laravel-referral-rewriter-tag` will be documented in this file.
 
+## v1.0.6 - 2026-03-26
+
+### What's Changed
+
+- stabilize the Laravel 12 maintenance baseline on `main`
+- align the dev toolchain to Testbench 10, Pest 3, Larastan 3, PHPStan 2, Rector 2, and Collision 8
+- replace the fragile multi-OS / Code Climate setup with a small `pull_request` gate that validates Composer, runs tests, and runs static analysis
+- add a real package boot smoke test and cover Instant Gaming config fallback defaults
+- add Composer Dependabot coverage and tighten auto-merge handling for non-major Dependabot PRs
+
+### Config Changes
+
+- `config/referral-rewriter-tag.php` now includes the optional `instantgaming.subtag` key
+
+### Upgrade Steps
+
+- require PHP 8.2 or newer for local development and CI
+- refresh local dev dependencies with `composer update`
+- if you rely on repository workflows, note that standalone `phpstan.yml` was removed and analysis now runs inside `run-tests.yml`
+
+### Compatibility Notes
+
+- the maintenance baseline now targets Laravel 12 through Orchestra Testbench 10
+- the testing / analysis toolchain now uses Pest 3, Larastan 3, PHPStan 2, and Rector 2
+
+### Maintenance PRs
+
+- merged #23
+- closed obsolete major Dependabot PRs #19, #20, and #22
+
+**Full Changelog**: https://github.com/The-3Labs-Team/laravel-referral-rewriter-tag/compare/v1.0.5...v1.0.6
+
 ## v1.1.0 - 2026-03-26
 
 ### What's Changed
