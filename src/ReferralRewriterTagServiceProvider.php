@@ -4,7 +4,6 @@ namespace The3LabsTeam\ReferralRewriterTag;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use The3LabsTeam\ReferralRewriterTag\Commands\ReferralRewriterTagCommand;
 
 class ReferralRewriterTagServiceProvider extends PackageServiceProvider
 {

@@ -69,3 +69,18 @@ it('can rewrite instant gaming link without tag and subtag', function () {
     $rewrittenLink = ReferralRewriterTag::rewrite($link, null, null);
     expect($rewrittenLink)->toBe('https://www.instant-gaming.com/it/1234-comprare-ket-steam-xxx/?igr=1234&linkCode=ogi');
 });
+
+it('can use instant gaming defaults from config', function () {
+    config()->set('referral-rewriter-tag.instantgaming.tag', 'configtag');
+    config()->set('referral-rewriter-tag.instantgaming.subtag', 'configsubtag');
+
+    $rewrittenLink = ReferralRewriterTag::rewrite(
+        'https://www.instant-gaming.com/it/1234-comprare-ket-steam-xxx/',
+        null,
+        null
+    );
+
+    expect($rewrittenLink)->toBe(
+        'https://www.instant-gaming.com/it/1234-comprare-ket-steam-xxx/?igr=configtag&igr_extra=configsubtag'
+    );
+});

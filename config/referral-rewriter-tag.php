@@ -12,5 +12,6 @@ return [
     ],
     'instantgaming' => [
         'tag' => '',
+        'subtag' => '',
     ],
 ];
